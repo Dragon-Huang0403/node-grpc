@@ -8,50 +8,12 @@ const client = new CounterClient(
   grpc.credentials.createInsecure()
 );
 
-function addOne() {
-  return new Promise((resolve, reject) => {
-    const request = new AddOneRequest();
-    request.setValue(5);
+function addOne() {}
 
-    client.addOne(request, (err, response) => {
-      if (err) {
-        console.error(err);
-        reject(err);
-        return;
-      }
-
-      console.log(response.getValue());
-      resolve(response.getValue());
-    });
-  });
-}
-
-async function counterStream() {
-  return new Promise((resolve, reject) => {
-    const request = new CounterStreamRequest();
-    request.setValue(5);
-
-    const call = client.counterStream(request);
-    call.on("data", (response) => {
-      console.log("value: ", response.getValue());
-    });
-
-    call.on("end", () => {
-      console.log("end");
-      resolve(null);
-    });
-
-    call.on("error", (err) => {
-      console.error(err);
-      reject(err);
-    });
-  });
-}
+async function counterStream() {}
 
 async function main() {
-  // await addOne();
-
-  await counterStream();
+  addOne();
 }
 
 main();
