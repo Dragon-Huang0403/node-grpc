@@ -3,10 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "client": "vite",
+    "client": "tsx ./src/client/client.ts",
     "server": "tsx ./src/server/server.ts",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
     "proto": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./ --grpc_out=grpc_js:./ ./src/proto/*.proto",
     "proto-ts": "protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=grpc_js:./ ./src/proto/*.proto"
   },
@@ -14,8 +12,7 @@
     "grpc_tools_node_protoc_ts": "^5.3.3",
     "grpc-tools": "^1.12.4",
     "tsx": "^4.7.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.9.13"
