@@ -1,6 +1,6 @@
 import * as grpc from "@grpc/grpc-js";
 
-import { AddOneRequest } from "../proto/counter_pb";
+import { AddOneRequest, CounterStreamRequest } from "../proto/counter_pb";
 import { CounterClient } from "../proto/counter_grpc_pb";
 
 const client = new CounterClient(
@@ -26,8 +26,32 @@ function addOne() {
   });
 }
 
+async function counterStream() {
+  return new Promise((resolve, reject) => {
+    const request = new CounterStreamRequest();
+    request.setValue(5);
+
+    const call = client.counterStream(request);
+    call.on("data", (response) => {
+      console.log("value: ", response.getValue());
+    });
+
+    call.on("end", () => {
+      console.log("end");
+      resolve(null);
+    });
+
+    call.on("error", (err) => {
+      console.error(err);
+      reject(err);
+    });
+  });
+}
+
 async function main() {
-  await addOne();
+  // await addOne();
+
+  await counterStream();
 }
 
 main();
