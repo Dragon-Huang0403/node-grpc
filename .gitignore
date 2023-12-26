@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Protobuf generated files
+src/proto/*.js
+src/proto/*.ts
