@@ -1,6 +1,5 @@
 {
   "name": "node-grpc",
-  "private": true,
   "version": "0.0.0",
   "scripts": {
     "client": "tsx ./src/client/client.ts",
