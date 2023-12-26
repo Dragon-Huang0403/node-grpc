@@ -6,9 +6,11 @@
   "scripts": {
     "client": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "proto": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./ --grpc_out=grpc_js:./ ./src/proto/counter.proto"
   },
   "devDependencies": {
+    "grpc-tools": "^1.12.4",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   }

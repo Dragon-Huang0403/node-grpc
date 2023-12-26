@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package counter;
+
+service Counter {
+  rpc AddOne(AddOneRequest) returns (AddOneResponse) {}
+  rpc CounterStream(CounterStreamRequest)
+      returns (stream CounterStreamResponse) {}
+}
+
+message AddOneRequest { int32 value = 1; }
+
+message AddOneResponse { int32 value = 1; }
+
+message CounterStreamRequest { int32 value = 1; }
+
+message CounterStreamResponse { int32 value = 1; }
